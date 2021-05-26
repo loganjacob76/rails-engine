@@ -13,6 +13,7 @@
 # it.
 require 'simplecov'
 SimpleCov.start
+SimpleCov.add_filter ['spec', 'config']
 # Previous content of test helper now starts here
 
 #
