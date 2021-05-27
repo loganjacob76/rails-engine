@@ -1,4 +1,6 @@
 class API::APIController < ActionController::Base
+  protect_from_forgery except: [:create, :destroy, :update]
+  
   def paginate(query)
     query.limit(page_size).offset(page * page_size)
   end
