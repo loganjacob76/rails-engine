@@ -25,6 +25,11 @@ class API::V1::ItemsController < API::APIController
     render json: ItemSerializer.new(item.destroy)
   end
 
+  def find_all
+    items = Item.where('name ilike ?', "%#{params[:name]}%")
+    render json: ItemSerializer.new(items)
+  end
+
   private
 
   def item
