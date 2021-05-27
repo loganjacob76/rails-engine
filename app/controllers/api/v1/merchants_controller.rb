@@ -7,6 +7,12 @@ class API::V1::MerchantsController < API::APIController
   def show
     render json: MerchantSerializer.new(merchant)
   end
+
+  def find
+    found = Merchant.find_by("name ilike ?", "%#{params[:name]}%")
+    render json: MerchantSerializer.new(found) if found.present?
+    render json: { data: {} } if found.nil?
+  end
   
   private
 
