@@ -22,6 +22,10 @@ class API::V1::MerchantsController < API::APIController
       render json: { error: 'Quantity cannot be empty' }, status: 400
     end
   end
+
+  def single_revenue
+    render json: MerchantRevenueSerializer.new(merchant)
+  end
   
   private
 
