@@ -35,8 +35,7 @@ RSpec.describe Merchant do
     end
     
     it '.by_revenue' do
-      skip
-      expect(Merchant.by_revenue(3).count).to eq(3)
+      expect(Merchant.by_revenue(2).length).to eq(2)
     end
   end
 end
