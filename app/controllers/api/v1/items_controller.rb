@@ -30,6 +30,16 @@ class API::V1::ItemsController < API::APIController
     render json: ItemSerializer.new(items)
   end
 
+  def revenue
+    quantity = params.fetch(:quantity, 10).to_i
+
+    if quantity.present? && quantity > 0
+      render json: ItemRevenueSerializer.new(Item.by_revenue(quantity))
+    else
+      render json: { error: 'Quantity must be an integer greater than 0' }, status: 400
+    end
+  end
+
   private
 
   def item
